@@ -9,4 +9,7 @@ migrateup:
 	migrate -path db/migration/ -database "postgresql://postgres:postgres@localhost:5432/simple_bank?sslmode=disable" -verbose up
 migratedown:
 	migrate -path db/migration/ -database "postgresql://postgres:postgres@localhost:5432/simple_bank?sslmode=disable" -verbose down
-.PHONY: postgres createdb dropdb migrateup migratedown
+sqlc:
+	docker run --rm -v C:\Users\Home\Desktop\code\go\simple_bank:/src -w /src kjconroy/sqlc generate
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc
